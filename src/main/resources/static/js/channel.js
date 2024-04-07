@@ -4,18 +4,28 @@ window.onload = function() {
         fetchAndDisplayMessages(channelId);
     }, 500);
 };
+const storedUser = JSON.parse(sessionStorage.getItem("user"));
 
 function fetchAndDisplayMessages(channelId) {
     fetch(`/channel/${channelId}/messages`)
         .then(response => response.json())
         .then(data => {
             let messagesContainer = document.getElementById('messages-container');
+            const isScrolledToBottom = messagesContainer.scrollHeight - messagesContainer.clientHeight <= messagesContainer.scrollTop + 1;
             messagesContainer.innerHTML = "";
             data.forEach(message => {
                 const p = document.createElement("p");
                 p.textContent = `${message.user.username}: ${message.content}`;
+                if (message.user.username === storedUser.username) {
+                    p.className ='own-bubble';
+                } else {
+                    p.className = 'other-bubble';
+                }
                 messagesContainer.appendChild(p);
             });
+            if (isScrolledToBottom) {
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
         })
         .catch(error => console.error('Error fetching messages:', error));
 }
@@ -26,11 +36,10 @@ function handleFormSubmission(event) {
     event.preventDefault();
     const content = document.querySelector(`input[name="content"]`).value;
     const channelId = document.getElementById("channel-id").value;
-    const user = JSON.parse(sessionStorage.getItem("user"));
 
     if (content.trim() !== '') {
         const message = {
-            user: user,
+            user: storedUser,
             content: content,
             channelId: channelId
         };

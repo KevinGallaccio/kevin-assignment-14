@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>[[${channel.name}]]</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"/>
 </head>
 <body>
-<h1>[[${channel.name}]] Channel</h1>
+<div class="channel-name">[[${channel.name}]] Channel <a class="back-to-list" href="/welcome"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></div>
 <hr>
-<div id="messages-container"></div>
+<div class="message-panel">
+<!--    <div class="messages-fade-overlay"></div>-->
+<div class="messages-container" id="messages-container">
+</div>
+</div>
 <hr>
 <form id="message-form" action="" method="post">
     <input type="hidden" id="channel-id" th:value="${channel.id}" />
-    <input type="text" name="content" placeholder="Enter message">
-    <input type="submit" value="Send">
+    <div class="text-submit">
+        <input class="text-input" type="text" name="content" placeholder="Enter message">
+        <button type="submit">
+            <i class="fa-regular fa-paper-plane"></i>
+        </button>
+    </div>
 </form>
-<a href="/welcome">Back</a>
 </body>
 <script type="text/javascript" src="/js/channel.js"></script>
 </html>
