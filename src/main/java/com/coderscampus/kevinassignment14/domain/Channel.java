@@ -1,9 +1,12 @@
 package com.coderscampus.kevinassignment14.domain;
 
+
 import java.util.List;
+
 
 public class Channel {
     private Long id;
+    private String name;
     private List<Message> messages;
 
     public Long getId() {
@@ -22,16 +25,16 @@ public class Channel {
         this.messages = messages;
     }
 
-    public Channel(Long id, List<Message> messages) {
-        this.id = id;
-        this.messages = messages;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Channel{" +
-                "id=" + id +
-                ", messages=" + messages +
-                '}';
+    public Channel(String name) {
+        this.name = name;
     }
+
+
 }

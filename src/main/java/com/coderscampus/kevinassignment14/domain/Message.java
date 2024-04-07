@@ -4,6 +4,7 @@ public class Message {
     private Long id;
     private User user;
     private String content;
+    private Long channelId;
 
     public Long getId() {
         return id;
@@ -29,10 +30,18 @@ public class Message {
         this.content = content;
     }
 
-    public Message(Long id, User user, String content) {
-        this.id = id;
+    public Long getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(Long channelId) {
+        this.channelId = channelId;
+    }
+
+    public Message(User user, String content, Long channelId) {
         this.user = user;
         this.content = content;
+        this.channelId = channelId;
     }
 
     @Override
@@ -41,6 +50,7 @@ public class Message {
                 "id=" + id +
                 ", user=" + user +
                 ", content='" + content + '\'' +
+                ", channelId=" + channelId +
                 '}';
     }
 }

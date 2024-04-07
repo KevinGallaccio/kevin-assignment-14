@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>[[${channel.name}]]</title>
 </head>
 <body>
-
+<h1>[[${channel.name}]] Channel</h1>
+<hr>
+<div id="messages-container"></div>
+<hr>
+<form id="message-form" action="" method="post">
+    <input type="hidden" id="channel-id" th:value="${channel.id}" />
+    <input type="text" name="content" placeholder="Enter message">
+    <input type="submit" value="Send">
+</form>
 </body>
+<script type="text/javascript" src="/js/channel.js"></script>
 </html>
