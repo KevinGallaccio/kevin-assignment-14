@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Join Channel</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"/>
 </head>
 <body>
-<div id="welcome-message"></div>
-<h1>Join Channel: </h1>
+<div class="title">
+    <div class="welcome-message" id="welcome-message"></div>
+    <div class="welcome-subtitle">Select a Channel below to join a chat</div>
+    <i class="fa-solid fa-circle-chevron-down"></i>
+</div>
+
 <hr>
-<div th:each="channel : ${channels}">
-    <a th:href="@{'/channel/' + ${channel.id}}" th:text="${channel.name}"></a>
+<div class="channel-links">
+    <div th:each="channel : ${channels}">
+        <a class="channel-link" th:href="@{'/channel/' + ${channel.id}}" th:text="${channel.name}"></a>
+    </div>
+<!--    <i class="fa-solid fa-circle-plus"></i>-->
 </div>
 <script type="text/javascript" src="/js/welcome.js"></script>
 </body>

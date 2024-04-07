@@ -16,4 +16,4 @@ if (storedUser) {
 }
 
 let welcomeMessage = document.getElementById("welcome-message")
-welcomeMessage.textContent = `Welcome ${user.username},`;
+welcomeMessage.textContent = `Welcome ${user.username}!`;
