@@ -18,7 +18,6 @@
     <div th:each="channel : ${channels}">
         <a class="channel-link" th:href="@{'/channel/' + ${channel.id}}" th:text="${channel.name}"></a>
     </div>
-<!--    <i class="fa-solid fa-circle-plus"></i>-->
 </div>
 <script type="text/javascript" src="/js/welcome.js"></script>
 </body>

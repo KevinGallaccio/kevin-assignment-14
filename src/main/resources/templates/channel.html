@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>[[${channel.name}]]</title>
+    <title th:unless="!${channel}">[[${channel.name}]]</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css"/>
 </head>
-<body>
+<body th:unless="!${channel}">
 <div class="channel-name">[[${channel.name}]] Channel <a class="back-to-list" href="/welcome"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></div>
 <hr>
 <div class="message-panel">

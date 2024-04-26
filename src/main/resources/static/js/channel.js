@@ -1,10 +1,14 @@
+const storedUser = JSON.parse(sessionStorage.getItem("user"));
+
+if (!storedUser) {
+    window.location.href = "/welcome";
+}
 window.onload = function() {
     const channelId = document.getElementById('channel-id').value;
     setInterval(() => {
         fetchAndDisplayMessages(channelId);
     }, 500);
 };
-const storedUser = JSON.parse(sessionStorage.getItem("user"));
 
 function fetchAndDisplayMessages(channelId) {
     fetch(`/channel/${channelId}/messages`)
